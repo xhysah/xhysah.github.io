@@ -1,0 +1,117 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="学习之浏览器缓存(新手小白的简单理解)       首先，我想写写我为什么要写博客第一就是想记录自己的学习过程，能够让自己在忘记这一部分的时候，能够翻出来看看，就相当于笔记一样，总结也会使我的脑子清楚第二就是发泄我的表达欲，哈哈哈哈哈，有时候发现自己表达欲挺强的，闲话比较多😂不说了，开始吧">
+<meta property="og:type" content="article">
+<meta property="og:title" content="学习之浏览器缓存">
+<meta property="og:url" content="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/index.html">
+<meta property="og:site_name" content="熊海燕的博客">
+<meta property="og:description" content="学习之浏览器缓存(新手小白的简单理解)       首先，我想写写我为什么要写博客第一就是想记录自己的学习过程，能够让自己在忘记这一部分的时候，能够翻出来看看，就相当于笔记一样，总结也会使我的脑子清楚第二就是发泄我的表达欲，哈哈哈哈哈，有时候发现自己表达欲挺强的，闲话比较多😂不说了，开始吧">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE.png">
+<meta property="article:published_time" content="2020-05-27T14:44:33.000Z">
+<meta property="article:modified_time" content="2020-05-27T15:00:25.580Z">
+<meta property="article:author" content="xhy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82.png"><meta name="keywords" content="xhy, 熊海燕的博客"><meta name="description" content="记录自己的学习，让自己更有动力去学习"><title>学习之浏览器缓存 | 熊海燕的博客</title><link ref="canonical" href="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="熊海燕的博客" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">熊海燕的博客</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">学习之浏览器缓存</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-27</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-27</span></span></div></header><div class="post-body">
+        <h1 id="学习之浏览器缓存-新手小白的简单理解"   >
+          <a href="#学习之浏览器缓存-新手小白的简单理解" class="heading-link"><i class="fas fa-link"></i></a>学习之浏览器缓存(新手小白的简单理解)</h1>
+      <p>首先，我想写写我为什么要写博客<br>第一就是想记录自己的学习过程，能够让自己在忘记这一部分的时候，能够翻出来看看，就相当于笔记一样，总结也会使我的脑子清楚<br>第二就是发泄我的表达欲，哈哈哈哈哈，有时候发现自己表达欲挺强的，闲话比较多😂不说了，开始吧</p>
+<a id="more"></a>
+
+        <h2 id="1-浏览器发起请求的过程"   >
+          <a href="#1-浏览器发起请求的过程" class="heading-link"><i class="fas fa-link"></i></a>1.浏览器发起请求的过程</h2>
+      <p><img src="%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%AF%B7%E6%B1%82.png" alt=""><br>浏览器发起请求时，会先在浏览器缓存中查找该请求的结果以及缓存标志</p>
+
+        <h4 id="如果没有缓存标志，会进行下面过程"   >
+          <a href="#如果没有缓存标志，会进行下面过程" class="heading-link"><i class="fas fa-link"></i></a>如果没有缓存标志，会进行下面过程</h4>
+      <p> 1.向服务器发送HTTP请求<br>2.服务器返回该请求的结果和缓存规则<br>3.将该请求结果和缓存标志存入浏览器缓存中</p>
+
+        <h4 id="如果有缓存标志，会查看浏览器缓存策略，判断强缓存是否生效"   >
+          <a href="#如果有缓存标志，会查看浏览器缓存策略，判断强缓存是否生效" class="heading-link"><i class="fas fa-link"></i></a>如果有缓存标志，会查看浏览器缓存策略，判断强缓存是否生效</h4>
+      <p>1.如果生效，不会向服务器发送请求，直接从缓存中读取资源，根据缓存优先级，确定使用哪一种缓存<br>2.如果不生效，则要进行协商缓存  </p>
+<ul>
+<li>1.浏览器会携带缓存标志向服务器发送请求，由服务器决定是否使用缓存</li>
+<li>2.如果该资源无更新，协商缓存生效，会返回状态码304和not modified，从缓存中读取资源</li>
+<li>3.如果该资源更新了，协商缓存失败，会返回状态码200和请求结果，将请求结果和缓存标志存在浏览器缓存中</li>
+</ul>
+
+        <h2 id="2-浏览器缓存策略"   >
+          <a href="#2-浏览器缓存策略" class="heading-link"><i class="fas fa-link"></i></a>2.浏览器缓存策略</h2>
+      <p><img src="%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E7%BC%93%E5%AD%98%E7%AD%96%E7%95%A5.png" alt=""></p>
+
+        <h4 id="强缓存-包括Expires和Cache-Control"   >
+          <a href="#强缓存-包括Expires和Cache-Control" class="heading-link"><i class="fas fa-link"></i></a>强缓存-包括Expires和Cache-Control</h4>
+      <p>1.Expires(到期时间)，来指定资源到期时间，根据服务器的时间<br>2.Cache-Control(缓存控制)，优先级高于expires    ，常见值如下</p>
+<ul>
+<li>max-age=30，缓存三十秒后就过期，需要重新请求</li>
+<li>no-store，不缓存任何响应</li>
+<li>no-cache，资源被缓存，但立即失效。下次会发起请求验证资源是否过期
+        <h4 id="协商缓存-包括Last-Modified和ETag"   >
+          <a href="#协商缓存-包括Last-Modified和ETag" class="heading-link"><i class="fas fa-link"></i></a>协商缓存-包括Last-Modified和ETag</h4>
+      </li>
+</ul>
+<p>1.Last-Modified</p>
+<ul>
+<li>浏览器第一次访问资源时，服务器会在response header中添加 Last-Modified的header–表示这个资源在服务器上最后修改的时间</li>
+<li>浏览器下一次请求时，浏览器检测到有Last-Modified的这个header，于是在请求头上加上If-Modified-Since</li>
+<li>这个值会与服务器上这个资源的最后修改时间进行比较<ul>
+<li>1.若小于服务器的更新时间，说明文件有更新，于是返回新的资源文件和200</li>
+<li>2.若等于与服务器的更新时间，说明文件没有更新，返回304和空的响应体</li>
+</ul>
+</li>
+</ul>
+<p>2.ETag，优先级高于Last-Modified</p>
+<ul>
+<li>Etag是服务器响应请求时，返回当前资源文件的一个唯一标识(由服务器生成)，只要资源有变化，Etag就会重新生成</li>
+<li>浏览器下一次请求时，浏览器检测到有Etag，于是在请求头上加上If-None-Match里</li>
+<li>服务器会将If-None-Match的值与自己的Etag值进行比较<ul>
+<li>1.若值一样是返回新的资源文件和200</li>
+<li>2.若值不一样，说明文件没有更新，返回304和空的响应体
+        <h2 id="3-缓存位置"   >
+          <a href="#3-缓存位置" class="heading-link"><i class="fas fa-link"></i></a>3.缓存位置</h2>
+      <img src="%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/%E7%BC%93%E5%AD%98%E4%BD%8D%E7%BD%AE.png" alt=""></li>
+</ul>
+</li>
+</ul>
+<p>1.Memory Cache(内存中的缓存)</p>
+<ul>
+<li>特点：读取速度快，存储空间小，一旦关闭了tab页面，内存中的缓存也就被释放了</li>
+</ul>
+<p>2.Disk Cache(硬盘中的缓存)</p>
+<ul>
+<li>特点：读取速度慢点，但存储空间大</li>
+</ul>
+<p>图片上还有两种，我不太理解，就不写了</p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">xhy</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/">http://yoursite.com/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%BC%93%E5%AD%98/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-prev"><a class="paginator-prev__link" href="/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8Bjs%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6/"><span class="paginator-prev__icon"><i class="fas fa-angle-left"></i></span><span class="paginator-prev__text">学习之js执行机制</span></a></div><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/27/%E5%AD%A6%E4%B9%A0%E4%B9%8B%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E6%B8%B2%E6%9F%93%E6%9C%BA%E5%88%B6/"><span class="paginator-prev__text">学习之浏览器的渲染机制</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学习之浏览器缓存-新手小白的简单理解"><span class="toc-number">1.</span> <span class="toc-text">
+          学习之浏览器缓存(新手小白的简单理解)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-浏览器发起请求的过程"><span class="toc-number">1.1.</span> <span class="toc-text">
+          1.浏览器发起请求的过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#如果没有缓存标志，会进行下面过程"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">
+          如果没有缓存标志，会进行下面过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如果有缓存标志，会查看浏览器缓存策略，判断强缓存是否生效"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">
+          如果有缓存标志，会查看浏览器缓存策略，判断强缓存是否生效</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-浏览器缓存策略"><span class="toc-number">1.2.</span> <span class="toc-text">
+          2.浏览器缓存策略</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#强缓存-包括Expires和Cache-Control"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">
+          强缓存-包括Expires和Cache-Control</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#协商缓存-包括Last-Modified和ETag"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">
+          协商缓存-包括Last-Modified和ETag</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-缓存位置"><span class="toc-number">1.3.</span> <span class="toc-text">
+          3.缓存位置</span></a></li></ol></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/favicon.JPG" alt="avatar"></div><p class="sidebar-ov-author__text">没有什么事情能敌得过时间</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/xhysah" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="Tough-xhy" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">5</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">0</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>xhy</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
