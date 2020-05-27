@@ -1,20 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>熊海燕的博客</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-05-26T02:55:04.832Z</updated>
+  <updated>2020-05-27T04:50:05.910Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>xhy</name>
     
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue+elementUI实战之网易云音乐--半月总结！！！</title>
+    <link href="http://yoursite.com/2020/05/27/vue-elementUI%E5%AE%9E%E6%88%98%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90-%E5%8D%8A%E6%9C%88%E6%80%BB%E7%BB%93%EF%BC%81%EF%BC%81%EF%BC%81/"/>
+    <id>http://yoursite.com/2020/05/27/vue-elementUI%E5%AE%9E%E6%88%98%E4%B9%8B%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90-%E5%8D%8A%E6%9C%88%E6%80%BB%E7%BB%93%EF%BC%81%EF%BC%81%EF%BC%81/</id>
+    <published>2020-05-27T04:33:17.000Z</published>
+    <updated>2020-05-27T04:50:05.910Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="模仿网易云音乐pc端"   >          <a href="#模仿网易云音乐pc端" class="heading-link"><i class="fas fa-link"></i></a>模仿网易云音乐pc端</h1>      <p>先写写心得体会吧，经过半个月，我实现了网易云音乐的一些功能。最开始的时候，我记得我几乎写点东西，就会去看我学vue的笔记，（笔记真的好有用，什么忘记了，就拿出来看看，不懂的再百度）。我觉得这半个月最难的就是，音乐播放部分了，终于昨天晚上，我成功的实现了音乐自动播放下一首，点击按钮切换上一首，下一首，我真的好开心，哈哈哈哈哈哈。不过，项目中出现过很多问题，我要一点点的总结下来，[项目地址(<span class="exturl"><a class="exturl__link"   href="https://github.com/xhysah/xhymusic"  target="_blank" rel="noopener">https://github.com/xhysah/xhymusic</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>).</p>        <h2 id="项目搭建"   >          <a href="#项目搭建" class="heading-link"><i class="fas fa-link"></i></a>项目搭建</h2>      <ul><li>        <h3 id="基本项目"   >          <a href="#基本项目" class="heading-link"><i class="fas fa-link"></i></a>基本项目</h3>         <strong>安装脚手架</strong>：npm install -g  @vue/cli<pre><code>**创建一个新项目**： vue create my-project(自己想取的项目名称)</code></pre>   1.Please pick a preset？(选择手动的，可以自己想要的配置)——-manully<br>   2.Check the features needed for your project(询问项目需求)：我选择的如下图<br><img src="/imgs/%E9%A1%B9%E7%9B%AE.png" alt=""><ol start="2"><li>Use history mode for router(路由模式是否使用history)? ——-yes  </li><li>Pick a CSS pre-processor(询问项目的css预处理器)：——–Stylus   </li><li>Pick a linter / formatter config(询问项目的格式校验方式)：——Standard  </li><li>Pick additional lint features:(询问项目是什么时候校验格式)——lint on save(保存时就校验，哈哈哈哈，因为我不知道怎么写代码是规范的，需要他实时约束我)  </li><li>Where do you prefer placing config for Babel, ESLint, etc.?（询问项目的配置文件放在那里）—–In dedicated config files  </li><li>Save this as a preset for future projects? (是否保存该配置，若是，你以后创建新项目的时候，就会看见这个配置)—-no<br>然后vue-cli就开始自己下载了，等待他<br><img src="/imgs/%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE.png" alt=""></li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        &lt;h1 id=&quot;模仿网易云音乐pc端&quot;   &gt;
+          &lt;a href=&quot;#模仿网易云音乐pc端&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;模仿网易云音乐pc端&lt;/h1&gt;
+      &lt;
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
