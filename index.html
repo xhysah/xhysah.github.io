@@ -41,42 +41,78 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><lin
 <li>
         <h3 id="基本项目"   >
           <a href="#基本项目" class="heading-link"><i class="fas fa-link"></i></a>基本项目</h3>
-         <strong>安装脚手架</strong>：npm install -g  @vue/cli<pre><code>**创建一个新项目**： vue create my-project(自己想取的项目名称)</code></pre>   1.Please pick a preset？(选择手动的，可以自己想要的配置)——-manully<br>   2.Check the features needed for your project(询问项目需求)：我选择的如下图<br><img src="/imgs/%E9%A1%B9%E7%9B%AE.png" alt=""><ol start="2">
+      <p>   <strong>安装脚手架</strong>：npm install -g  @vue/cli</p>
+<pre><code>**创建一个新项目**： vue create my-project(自己想取的项目名称)</code></pre><p>   1.Please pick a preset？(选择手动的，可以自己想要的配置)——-manully<br>   2.Check the features needed for your project(询问项目需求)：我选择的如下图<br><img src="/imgs/%E9%A1%B9%E7%9B%AE.png" alt=""></p>
+<ol start="2">
 <li>Use history mode for router(路由模式是否使用history)? ——-yes  </li>
 <li>Pick a CSS pre-processor(询问项目的css预处理器)：——–Stylus   </li>
 <li>Pick a linter / formatter config(询问项目的格式校验方式)：——Standard  </li>
 <li>Pick additional lint features:(询问项目是什么时候校验格式)——lint on save(保存时就校验，哈哈哈哈，因为我不知道怎么写代码是规范的，需要他实时约束我)  </li>
 <li>Where do you prefer placing config for Babel, ESLint, etc.?（询问项目的配置文件放在那里）—–In dedicated config files  </li>
-<li>Save this as a preset for future projects? (是否保存该配置，若是，你以后创建新项目的时候，就会看见这个配置)—-no<br>然后vue-cli就开始自己下载了，等待他<br><img src="/imgs/%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE.png" alt=""></li>
+<li>Save this as a preset for future projects? (是否保存该配置，若是，你以后创建新项目的时候，就会看见这个配置)—-no<br>然后vue-cli就开始自己下载了，等待他<br><img src="/imgs/%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE.png" alt=""><ul>
+<li>
+        <h3 id="引入项目中使用的东西——axios，element-Ul"   >
+          <a href="#引入项目中使用的东西——axios，element-Ul" class="heading-link"><i class="fas fa-link"></i></a>引入项目中使用的东西——axios，element-Ul</h3>
+      </li>
+</ul>
+<strong>1.axios</strong><br>下载npm install axios –save，运行时也会使用，所有要保存在你的运行时依赖中<br>在src/main.js中：导入import axios from ‘axios’，<br>挂载到vue原型上Vue.prototype.$http = axios—-使用的时候，就可以this.$http<br>全局配置axios.defaults.baseURL = ‘<span class="exturl"><a class="exturl__link"   href="http://192.168.1.5:3000&#39;" >http://192.168.1.5:3000&#39;</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span><br>axios.defaults.withCredentials = true 表示跨域请求时是否需要使用凭证<br><strong>2.element-UI</strong><br>下载npm i element-ui -save<br>我是在src下面建了一个elementUI文件夹，再建了一个element.js文件<br>在这个文件中，按需引入elementUI<figure class="highlight plain"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39;</span><br><span class="line">import &#123;</span><br><span class="line">  	Form,</span><br><span class="line">	FormItem</span><br><span class="line"> &#125;from &#39;element-ui&#39;;</span><br><span class="line"> Vue.use(Form)</span><br><span class="line"> Vue.use(FormItem)</span><br></pre></td></tr></table></div></figure>
+再在main.js中引入import ‘./elementUi/element’<br>最后删掉views，components里面原本存在的vue文件，连同src/router/index.js里的路由一起删掉—-然后做完这些，我就开始研究文档了，一开始真的好难上手<br><span class="exturl"><a class="exturl__link"   href="https://github.com/Binaryify/NeteaseCloudMusicApi"  target="_blank" rel="noopener">网易云github地址</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.<br>下载后 node app.js 就可以了
+        <h2 id="遇到的问题"   >
+          <a href="#遇到的问题" class="heading-link"><i class="fas fa-link"></i></a>遇到的问题</h2>
+      <ul>
+<li>
+        <h3 id="播放音乐"   >
+          <a href="#播放音乐" class="heading-link"><i class="fas fa-link"></i></a>播放音乐</h3>
+      最开始的时候，我知道肯定会用audio标签，建立了一个musicPlayer组件，然后把它固定在浏览器底部，因为有好几个页面都有音乐播放，所以我只能把音乐数据放在vuex里面统一管理，传给vuex的值都是可用数据了，每次只能播放一首歌，播放完后，就直接停止了，我应该在他的ended事件里面做些什么。逻辑是这样的<br><img src="/imgs/%E6%B5%81%E7%A8%8B%E5%9B%BE.png" alt=""><br>大概吧，我真的不知道怎么表述了，反正数据，我都存在vuex里面了，<br>总结：</li>
+</ul>
+</li>
 </ol>
 </li>
+<li><p>1.在actions里面可以调用mutation——–context.commit(‘事件类型’,’参数’)，网络请求等异步操作，放在actions里面————组件调用this.$store.dispatch(‘事件类型’, ‘参数’)</p>
+</li>
+<li><p>2.mutations——组件调用this$store.commit(‘事件类型’,’参数’)–vuex的store状态的更新唯一方式，注意不能在actions里直接修改state里的值，改是可以改的，不提倡，容易出问题</p>
+</li>
+<li>
+        <h3 id="路由跳转"   >
+          <a href="#路由跳转" class="heading-link"><i class="fas fa-link"></i></a>路由跳转</h3>
+      <p>问题：elementui中的导航菜单，自带的:default-active=”activeIndex”，他只有点击才有对应的效果，你要是选择了第二项，然后刷新，他就会自动跳到第一个上面，整个导航菜单就会乱掉</p>
+</li>
+<li><p>我把首页里的activeName值保存在vuex中，同时也从vuex中取值，每次跳转时，都会在生命周期created里面提交修改activeName的值，路由就不会乱掉了</p>
+</li>
+<li>
+        <h3 id="flex布局"   >
+          <a href="#flex布局" class="heading-link"><i class="fas fa-link"></i></a>flex布局</h3>
+      <p>在项目中，我经常遇到布局问题，因为好多图片，都要居中对齐，看起来整洁一点，总结一下经常用的</p>
+</li>
+<li><p>容器的justify-content属性，属性值space-between两端项目之间的距离都相等，center居中对齐</p>
+</li>
+<li><p>容器的flex-warp—-定义一行排不下item，如何换行—-wrap换行</p>
+</li>
+<li><p>容器属性<br><img src="/imgs/%E5%AE%B9%E5%99%A8%E5%B1%9E%E6%80%A7.png" alt=""></p>
+<ul>
+<li><p>项目属性<br><img src="/imgs/%E9%A1%B9%E7%9B%AE%E5%B1%9E%E6%80%A7.png" alt=""></p>
+</li>
+<li>
+        <h3 id="定位"   >
+          <a href="#定位" class="heading-link"><i class="fas fa-link"></i></a>定位</h3>
+      <p>relative：相对定位，不脱离文档流，参考自身的静态位置<br>absolute：绝对定位，参考最近一个不为static的父级元素的位置<br>fixed：固定定位，参照对象为可视窗口<br>static ：默认，按照正常流进行排列</p>
+</li>
+<li>
+        <h3 id="修饰符sync"   >
+          <a href="#修饰符sync" class="heading-link"><i class="fas fa-link"></i></a>修饰符sync</h3>
+      <p>在我使用elementUI时，我发现经常有数据，会加上这个修饰符.sync,一直不明白是什么意思</p>
+</li>
+<li><p>其实sync是一个语法糖，是什么语法糖呢？</p>
+</li>
+<li><p>在子组件中不能修改父组件中的值，要想修改父组件中的值，必须向父组件发射一个方法this.$emit(‘方法名’,‘修改的的值);，然后父组件接收这个方法@方法名=‘处理数据操作’</p>
+</li>
+<li><p>如果使用.sync,就不用上面操作了，在子组件中修改的值，父组件也会同步变化</p>
+
+        <h2 id="项目截图"   >
+          <a href="#项目截图" class="heading-link"><i class="fas fa-link"></i></a>项目截图</h2>
+      <p><img src="/imgs/%E9%A6%96%E9%A1%B5.png" alt=""><br><img src="/imgs/%E6%88%91%E7%9A%84%E9%9F%B3%E4%B9%90.png" alt=""><br><img src="/imgs/%E6%8E%92%E8%A1%8C%E6%A6%9C.png" alt=""><br><img src="/imgs/%E6%AD%8C%E5%8D%95.png" alt=""><br><img src="/imgs/%E6%AD%8C%E5%8D%95%E6%AD%8C%E6%9B%B2.png" alt=""><br><img src="/imgs/%E6%AD%8C%E6%89%8B.png" alt=""><br><img src="/imgs/%E6%AD%8C%E6%89%8B%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF.png" alt=""><br><img src="/imgs/mv%E6%92%AD%E6%94%BE.png" alt=""><br><img src="/imgs/%E8%A7%86%E9%A2%91%E6%92%AD%E6%94%BE.png" alt=""></p>
+</li>
 </ul>
-</div></div></article><article class="postlist-item post"><header class="post-header"><h1 class="post-title"><a class="post-title__link" href="/2020/05/26/hello-world/">Hello World</a></h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-26</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-26</span></span></div></header><div class="post-body"><div class="post-excerpt"><p>Welcome to <span class="exturl"><a class="exturl__link"   href="https://hexo.io/"  target="_blank" rel="noopener">Hexo</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>! This is your very first post. Check <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/"  target="_blank" rel="noopener">documentation</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> for more info. If you get any problems when using Hexo, you can find the answer in <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/troubleshooting.html"  target="_blank" rel="noopener">troubleshooting</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span> or you can ask me on <span class="exturl"><a class="exturl__link"   href="https://github.com/hexojs/hexo/issues"  target="_blank" rel="noopener">GitHub</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span>.</p>
-
-        <h2 id="Quick-Start"   >
-          <a href="#Quick-Start" class="heading-link"><i class="fas fa-link"></i></a>Quick Start</h2>
-      
-        <h3 id="Create-a-new-post"   >
-          <a href="#Create-a-new-post" class="heading-link"><i class="fas fa-link"></i></a>Create a new post</h3>
-      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></div></figure>
-
-<p>More info: <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/writing.html"  target="_blank" rel="noopener">Writing</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-
-        <h3 id="Run-server"   >
-          <a href="#Run-server" class="heading-link"><i class="fas fa-link"></i></a>Run server</h3>
-      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></div></figure>
-
-<p>More info: <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/server.html"  target="_blank" rel="noopener">Server</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-
-        <h3 id="Generate-static-files"   >
-          <a href="#Generate-static-files" class="heading-link"><i class="fas fa-link"></i></a>Generate static files</h3>
-      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></div></figure>
-
-<p>More info: <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/generating.html"  target="_blank" rel="noopener">Generating</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-
-        <h3 id="Deploy-to-remote-sites"   >
-          <a href="#Deploy-to-remote-sites" class="heading-link"><i class="fas fa-link"></i></a>Deploy to remote sites</h3>
-      <figure class="highlight bash"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></div></figure>
-
-<p>More info: <span class="exturl"><a class="exturl__link"   href="https://hexo.io/docs/one-command-deployment.html"  target="_blank" rel="noopener">Deployment</a><span class="exturl__icon"><i class="fas fa-external-link-alt"></i></span></span></p>
-</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">2</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>xhy</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
+</li>
+</ul>
+</div></div></article></section><nav class="paginator"><div class="paginator-inner"><span class="page-number current">1</span></div></nav></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><section class="sidebar-toc hide"></section><!-- ov = overview--><section class="sidebar-ov"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/stun-logo.svg" alt="avatar"></div><p class="sidebar-ov-author__text">hello world</p></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">归档</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>xhy</span></div><div><span>由 <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> 强力驱动</span><span> v4.2.1</span><span class="footer__devider">|</span><span>主题 - <a href="https://github.com/liuyib/hexo-theme-stun/" title="Stun" target="_blank" rel="noopener">Stun</a></span><span> v2.0.0</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
