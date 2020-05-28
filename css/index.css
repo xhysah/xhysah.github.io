@@ -720,7 +720,7 @@ kbd {
   height: 80vh;
 }
 .header-inner--bgcolor {
-  background-color: #fff;
+  background-color: FF2C2C2C;
 }
 .header-inner--height {
   height: 50px !important;
@@ -748,7 +748,7 @@ kbd {
 }
 .header-nav--sticky {
   position: fixed;
-  background-color: #fff;
+  background-color: FF2C2C2C;
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   -o-transform: translateY(-100%);
