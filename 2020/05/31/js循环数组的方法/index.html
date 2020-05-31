@@ -5,14 +5,14 @@
 <meta property="og:site_name" content="xhy&#39;s blogs">
 <meta property="og:description" content="学习总结之js循环数组的方法">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png">
-<meta property="og:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/2.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/2.png">
 <meta property="article:published_time" content="2020-05-31T04:44:41.000Z">
 <meta property="article:modified_time" content="2020-05-31T04:53:48.666Z">
 <meta property="article:author" content="xhy">
 <meta property="article:tag" content="javascript">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png"><meta name="keywords" content="xhy, xhy's blogs"><meta name="description" content="记录自己的学习，让自己更有动力去学习"><title>js循环数组的方法 | xhy's blogs</title><link ref="canonical" href="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+<meta name="twitter:image" content="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png"><meta name="keywords" content="xhy, xhy's blogs"><meta name="description" content="记录自己的学习，让自己更有动力去学习"><title>js循环数组的方法 | xhy's blogs</title><link ref="canonical" href="http://yoursite.com/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
 var CONFIG = {
   root: '/',
   algolia: undefined,
@@ -37,29 +37,29 @@ var CONFIG = {
 
 window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="xhy's blogs" type="application/atom+xml">
 </head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">xhy's blogs</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">js循环数组的方法</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-05-31</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-05-31</span></span></div></header><div class="post-body">
-        <h1 id="学习总结之js循环数组的方法"   >
+        <h1 id="学习总结之js循环数组的方法">
           <a href="#学习总结之js循环数组的方法" class="heading-link"><i class="fas fa-link"></i></a>学习总结之js循环数组的方法</h1>
       <a id="more"></a>
 <p>先声明一个数组</p>
 <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="string">'你'</span>,<span class="string">'我'</span>,<span class="string">'他'</span>,<span class="string">'你'</span>]</span><br></pre></td></tr></table></div></figure>
 <ul>
 <li>
-        <h2 id="for循环"   >
+        <h2 id="for循环">
           <a href="#for循环" class="heading-link"><i class="fas fa-link"></i></a>for循环</h2>
       <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;arr.length; i++) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arr[i])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>
-<p>根据数组长度，循环数组索引值，按索引值取出数组元素<br><img src="js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png" alt="在这里插入图片描述"></p>
+<p>根据数组长度，循环数组索引值，按索引值取出数组元素<br><img src="/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/1.png" alt="在这里插入图片描述"></p>
 </li>
 <li>
-        <h2 id="arr-forEach-循环"   >
+        <h2 id="arr-forEach-循环">
           <a href="#arr-forEach-循环" class="heading-link"><i class="fas fa-link"></i></a>arr.forEach()循环</h2>
       <ul>
 <li>1.参数一(必须)：回调函数，该回调函数有三个参数(currentValue:当前元素, index:当前元素索引值, arr:当前数组对象）</li>
 <li>2.参数二(可选)：指定this的指向。<figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span> (<span class="params">value, index, array</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value,index,array)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></div></figure>
-<img src="js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/2.png" alt="在这里插入图片描述"></li>
+<img src="/2020/05/31/js%E5%BE%AA%E7%8E%AF%E6%95%B0%E7%BB%84%E7%9A%84%E6%96%B9%E6%B3%95/2.png" alt="在这里插入图片描述"></li>
 </ul>
 </li>
 <li>
-        <h2 id="for-of-与-for-in"   >
+        <h2 id="for-of-与-for-in">
           <a href="#for-of-与-for-in" class="heading-link"><i class="fas fa-link"></i></a>for of 与 for in</h2>
       <ul>
 <li>1.for of——- 直接循环遍历出数组的值</li>
@@ -71,7 +71,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><lin
 
 <ul>
 <li>
-        <h2 id="arr-indexOf-与-arr-lastIndexOf"   >
+        <h2 id="arr-indexOf-与-arr-lastIndexOf">
           <a href="#arr-indexOf-与-arr-lastIndexOf" class="heading-link"><i class="fas fa-link"></i></a>arr.indexOf 与 arr.lastIndexOf</h2>
       <ul>
 <li>1.arr.indexOf——- 数组从左往右遍历，如果找到匹配的值，停止寻找，返回该元素的索引值，找不到返回-1</li>
@@ -80,27 +80,27 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><lin
 </ul>
 </li>
 <li>
-        <h2 id="arr-some"   >
+        <h2 id="arr-some">
           <a href="#arr-some" class="heading-link"><i class="fas fa-link"></i></a>arr.some()</h2>
       <p>循环遍历数组，查找数组中的元素，是否满足某一要求，只要有一个满足，返回true</p>
 <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> result = arr.some(<span class="function">(<span class="params">value, index, array</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value === <span class="string">'你'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result)<span class="comment">// true</span></span><br></pre></td></tr></table></div></figure></li>
 <li>
-        <h2 id="arr-every"   >
+        <h2 id="arr-every">
           <a href="#arr-every" class="heading-link"><i class="fas fa-link"></i></a>arr.every()</h2>
       <p>循环遍历数组，数组中的所有元素，满足条件时，才返回true</p>
 <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result2 = arr.every(<span class="function">(<span class="params">value, index, array</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value === <span class="string">'你'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(result2)<span class="comment">// false</span></span><br></pre></td></tr></table></div></figure></li>
 <li>
-        <h2 id="arr-map"   >
+        <h2 id="arr-map">
           <a href="#arr-map" class="heading-link"><i class="fas fa-link"></i></a>arr.map()</h2>
       <p>对数组元素进行操作，return的值作为对应位置的元素值，返回一个新数组</p>
 <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> newArr = arr.map(<span class="function">(<span class="params">value, index, array</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> value +<span class="string">'-----'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(newArr)<span class="comment">// [ '你-----', '我-----', '他-----', '你-----' ]</span></span><br></pre></td></tr></table></div></figure></li>
 <li>
-        <h2 id="arr-filter"   >
+        <h2 id="arr-filter">
           <a href="#arr-filter" class="heading-link"><i class="fas fa-link"></i></a>arr.filter()</h2>
       <p>过滤数组，保留返回true，不保留返回false</p>
 <figure class="highlight javascript"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> list = []</span><br><span class="line"><span class="keyword">const</span> newArr2 = arr.filter(<span class="function">(<span class="params">value, index, array</span>) =&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (list.indexOf(value) === <span class="number">-1</span>) &#123;</span><br><span class="line">    list.push(value)</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(newArr2)<span class="comment">// [ '你', '我', '他' ]</span></span><br></pre></td></tr></table></div></figure></li>
 <li>
-        <h2 id="arr-reduce"   >
+        <h2 id="arr-reduce">
           <a href="#arr-reduce" class="heading-link"><i class="fas fa-link"></i></a>arr.reduce()</h2>
       <ul>
 <li>1.参数一：回调函数，参数组成（previousValue：初值或return 的值, currentValue：当前元素的值, currentIndex:当前元素的索引值, array：遍历的数组对象）</li>
