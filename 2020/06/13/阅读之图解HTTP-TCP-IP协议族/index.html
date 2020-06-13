@@ -1,0 +1,96 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><link rel="icon" href="/images/icons/favicon-16x16.png?v=2.0.0" type="image/png" sizes="16x16"><link rel="icon" href="/images/icons/favicon-32x32.png?v=2.0.0" type="image/png" sizes="32x32"><meta name="description" content="什么是协议？       计算机要在网络中进行通信，双方就必须基于相同的方法，例如如何探测到通信目标，由哪一边先发起通信，使用哪种语言进行通信，怎样结束通信等规则，都需要事先确定，这种规则就叫做协议                     TCP&#x2F;IP协议族：                            协议族是什么？         把互联网相关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="阅读之图解HTTP-TCP&#x2F;IP协议族">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/index.html">
+<meta property="og:site_name" content="xhy&#39;s blogs">
+<meta property="og:description" content="什么是协议？       计算机要在网络中进行通信，双方就必须基于相同的方法，例如如何探测到通信目标，由哪一边先发起通信，使用哪种语言进行通信，怎样结束通信等规则，都需要事先确定，这种规则就叫做协议                     TCP&#x2F;IP协议族：                            协议族是什么？         把互联网相关">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020061317530089.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200613181546109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2020061320111951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20200613204938501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
+<meta property="article:published_time" content="2020-06-13T13:06:30.000Z">
+<meta property="article:modified_time" content="2020-06-13T13:08:48.084Z">
+<meta property="article:author" content="xhy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2020061317530089.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center"><meta name="keywords" content="xhy, xhy's blogs"><meta name="description" content="记录自己的学习，让自己更有动力去学习"><title>阅读之图解HTTP-TCP/IP协议族 | xhy's blogs</title><link ref="canonical" href="http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
+var CONFIG = {
+  root: '/',
+  algolia: undefined,
+  fontIcon: {"prompt":{"success":"fas fa-check-circle","info":"fas fa-arrow-circle-right","warning":"fas fa-exclamation-circle","error":"fas fa-times-circle"},"copyBtn":"fas fa-copy"},
+  sidebar: {"offsetTop":"20px","tocMaxDepth":6},
+  header: {"enable":true,"showOnPost":true,"scrollDownIcon":false},
+  postWidget: {"endText":true},
+  nightMode: {"enable":true},
+  back2top: {"enable":true},
+  codeblock: {"style":"default","highlight":"light","wordWrap":false},
+  reward: false,
+  fancybox: false,
+  zoomImage: {"gapAside":"20px"},
+  galleryWaterfall: undefined,
+  lazyload: false,
+  pjax: undefined,
+  externalLink: {"icon":{"enable":true,"name":"fas fa-external-link-alt"}},
+  shortcuts: undefined,
+  prompt: {"copyButton":"复制","copySuccess":"复制成功","copyError":"复制失败"},
+  sourcePath: {"js":"js","css":"css","images":"images"},
+};
+
+window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="xhy's blogs" type="application/atom+xml">
+</head><body><div class="container" id="container"><header class="header" id="header"><div class="header-inner"><nav class="header-nav header-nav--fixed"><div class="header-nav-inner"><div class="header-nav-menubtn"><i class="fas fa-bars"></i></div><div class="header-nav-menu"><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/"><span class="header-nav-menu-item__icon"><i class="fas fa-home"></i></span><span class="header-nav-menu-item__text">首页</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/archives/"><span class="header-nav-menu-item__icon"><i class="fas fa-folder-open"></i></span><span class="header-nav-menu-item__text">归档</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/categories/"><span class="header-nav-menu-item__icon"><i class="fas fa-layer-group"></i></span><span class="header-nav-menu-item__text">分类</span></a></div><div class="header-nav-menu-item"><a class="header-nav-menu-item__link" href="/tags/"><span class="header-nav-menu-item__icon"><i class="fas fa-tags"></i></span><span class="header-nav-menu-item__text">标签</span></a></div></div><div class="header-nav-mode"><div class="mode"><div class="mode-track"><span class="mode-track-moon"></span><span class="mode-track-sun"></span></div><div class="mode-thumb"></div></div></div></div></nav><div class="header-banner"><div class="header-banner-info"><div class="header-banner-info__title">xhy's blogs</div><div class="header-banner-info__subtitle"></div></div></div></div></header><main class="main" id="main"><div class="main-inner"><div class="content-wrap" id="content-wrap"><div class="content" id="content"><!-- Just used to judge whether it is an article page--><div id="is-post"></div><div class="post"><header class="post-header"><h1 class="post-title">阅读之图解HTTP-TCP/IP协议族</h1><div class="post-meta"><span class="post-meta-item post-meta-item--createtime"><span class="post-meta-item__icon"><i class="far fa-calendar-plus"></i></span><span class="post-meta-item__info">发表于</span><span class="post-meta-item__value">2020-06-13</span></span><span class="post-meta-item post-meta-item--updatetime"><span class="post-meta-item__icon"><i class="far fa-calendar-check"></i></span><span class="post-meta-item__info">更新于</span><span class="post-meta-item__value">2020-06-13</span></span></div></header><div class="post-body">
+        <h1 id="什么是协议？">
+          <a href="#什么是协议？" class="heading-link"><i class="fas fa-link"></i></a>什么是协议？</h1>
+      <p>计算机要在网络中进行通信，双方就必须基于相同的方法，例如如何探测到通信目标，由哪一边先发起通信，使用哪种语言进行通信，怎样结束通信等规则，都需要事先确定，这种规则就叫做协议</p>
+
+        <h1 id="TCP-IP协议族：">
+          <a href="#TCP-IP协议族：" class="heading-link"><i class="fas fa-link"></i></a>TCP/IP协议族：</h1>
+      <ul>
+<li>
+        <h2 id="协议族是什么？">
+          <a href="#协议族是什么？" class="heading-link"><i class="fas fa-link"></i></a>协议族是什么？</h2>
+      <p>  把互联网相关联的协议集合起来总称为协议族</p>
+</li>
+<li>
+        <h2 id="与OSI参考模型是什么关系？">
+          <a href="#与OSI参考模型是什么关系？" class="heading-link"><i class="fas fa-link"></i></a>与OSI参考模型是什么关系？</h2>
+      <p>  OSI参考模型是一个理论上的(理想)网络通信模型，而TCP/IP协议族则是实际运行的网络协议<br>  <img src="https://img-blog.csdnimg.cn/2020061317530089.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"></p>
+<pre><code>TCP/IP协议族中的每一层，都有不同的协议</code></pre></li>
+<li>
+        <h2 id="TCP-IP怎样进行通信传输？">
+          <a href="#TCP-IP怎样进行通信传输？" class="heading-link"><i class="fas fa-link"></i></a>TCP/IP怎样进行通信传输？</h2>
+      <p>  <img src="https://img-blog.csdnimg.cn/20200613181546109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"></p>
+<p>  1.客户端在应用层发起http请求，向下传给传输层<br>  2.传输层的TCP协议对HTTP请求报文进行分割，并在报文上打上标记，传给网络层<br>  3.网络层，通过ARP寻找服务器端的MAC地址，根据路由选择进行中转<br>  4.服务器端在链路层接收到数据，向上传，传输到应用层<br>  ⚠️⚠️⚠️HTTP是是基于TCP的，所以首先会先建立tcp连接（三次握手），再建立HTTP连接</p>
+</li>
+<li>
+        <h2 id="各层协议简介">
+          <a href="#各层协议简介" class="heading-link"><i class="fas fa-link"></i></a>各层协议简介</h2>
+      <ul>
+<li>FTP：文件传输协议，基于TCP  </li>
+<li>DNS：域名系统服务，提供域名和IP地址的映射，ip地址不符合我们的记忆习惯  </li>
+<li>HTTP：超文本传输协议  </li>
+<li>TCP：面向连接的、可靠的、基于字节流的传输层通信协议  </li>
+<li>UDP：面向无连接的，基于数据报的传输层协议  </li>
+<li>IP：网际协议，IP地址指明了节点被分配到的地址  </li>
+<li>ARP：地址解析协议，用于查询ip地址的MAC地址（全球唯一）  </li>
+<li>RARP： 逆地址解析协议，用于把MAC地址转换成IP地址  </li>
+<li>HTTP：超文本传输协议  
+        <h1 id="TCP的三次握手策略">
+          <a href="#TCP的三次握手策略" class="heading-link"><i class="fas fa-link"></i></a>TCP的三次握手策略</h1>
+      握手过程中使用了TCP的标志  </li>
+</ul>
+</li>
+</ul>
+<p>1.SYN(发送标记位)<br>2.seq(序列号)<br>3.ACK(确认值，值为1即为确认已连接)<br>4.ack(确认编号，即对方主机传过来的seq+1)<br><img src="https://img-blog.csdnimg.cn/2020061320111951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"></p>
+
+        <h1 id="TCP的四次挥手">
+          <a href="#TCP的四次挥手" class="heading-link"><i class="fas fa-link"></i></a>TCP的四次挥手</h1>
+      <p>握手过程中使用了TCP的标志<br>1.FIN<br>2.seq(序号)<br>3.ACK(确认值，值为1即为确认已连接)<br>4.ack(确认编号，即对方主机传过来的seq+1)<br><img src="https://img-blog.csdnimg.cn/20200613204938501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"></p>
+</div><footer class="post-footer"><div class="post-ending ending"><div class="ending__text">------ 本文结束，感谢您的阅读 ------</div></div><div class="post-copyright copyright"><div class="copyright-author"><span class="copyright-author__name">本文作者: </span><span class="copyright-author__value"><a href="http://yoursite.com">xhy</a></span></div><div class="copyright-link"><span class="copyright-link__name">本文链接: </span><span class="copyright-link__value"><a href="http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/">http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/</a></span></div><div class="copyright-notice"><span class="copyright-notice__name">版权声明: </span><span class="copyright-notice__value">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" rel="external nofollow" target="_blank">BY-NC-SA</a> 许可协议。转载请注明出处！</span></div></div><nav class="post-paginator paginator"><div class="paginator-next"><a class="paginator-next__link" href="/2020/05/31/%E5%AD%A6%E4%B9%A0%E4%B9%8Bes6%E8%BF%90%E7%AE%97%E7%AC%A6/"><span class="paginator-prev__text">学习之es6运算符...</span><span class="paginator-next__icon"><i class="fas fa-angle-right"></i></span></a></div></nav></footer></div></div></div><div class="sidebar-wrap" id="sidebar-wrap"><aside class="sidebar" id="sidebar"><div class="sidebar-nav"><span class="sidebar-nav-toc current">文章目录</span><span class="sidebar-nav-ov">站点概览</span></div><section class="sidebar-toc"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是协议？"><span class="toc-number">1.</span> <span class="toc-text">
+          什么是协议？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP-IP协议族："><span class="toc-number">2.</span> <span class="toc-text">
+          TCP&#x2F;IP协议族：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#协议族是什么？"><span class="toc-number">2.1.</span> <span class="toc-text">
+          协议族是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#与OSI参考模型是什么关系？"><span class="toc-number">2.2.</span> <span class="toc-text">
+          与OSI参考模型是什么关系？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP-IP怎样进行通信传输？"><span class="toc-number">2.3.</span> <span class="toc-text">
+          TCP&#x2F;IP怎样进行通信传输？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#各层协议简介"><span class="toc-number">2.4.</span> <span class="toc-text">
+          各层协议简介</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP的三次握手策略"><span class="toc-number">3.</span> <span class="toc-text">
+          TCP的三次握手策略</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TCP的四次挥手"><span class="toc-number">4.</span> <span class="toc-text">
+          TCP的四次挥手</span></a></li></ol></section><!-- ov = overview--><section class="sidebar-ov hide"><div class="sidebar-ov-author"><div class="sidebar-ov-author__avatar"><img class="sidebar-ov-author__avatar_img" src="/images/icons/favicon.JPG" alt="avatar"></div><p class="sidebar-ov-author__text">没有什么事情能敌得过时间</p></div><div class="sidebar-ov-social"><a class="sidebar-ov-social-item" href="https://github.com/xhysah" target="_blank" rel="noopener" data-popover="Github" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-github"></i></span></a><a class="sidebar-ov-social-item" href="Tough-xhy" target="_blank" rel="noopener" data-popover="微信" data-popover-pos="up"><span class="sidebar-ov-social-item__icon"><i class="fab fa-weixin"></i></span></a></div><div class="sidebar-ov-state"><a class="sidebar-ov-state-item sidebar-ov-state-item--posts" href="/archives/"><div class="sidebar-ov-state-item__count">9</div><div class="sidebar-ov-state-item__name">归档</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--categories" href="/categories/"><div class="sidebar-ov-state-item__count">1</div><div class="sidebar-ov-state-item__name">分类</div></a><a class="sidebar-ov-state-item sidebar-ov-state-item--tags" href="/tags/"><div class="sidebar-ov-state-item__count">4</div><div class="sidebar-ov-state-item__name">标签</div></a></div><div class="sidebar-ov-cc"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.en" target="_blank" rel="noopener" data-popover="知识共享许可协议" data-popover-pos="up"><img src="/images/cc-by-nc-sa.svg"></a></div></section><div class="sidebar-reading"><div class="sidebar-reading-info"><span class="sidebar-reading-info__text">你已阅读了 </span><span class="sidebar-reading-info__num">0</span></div><div class="sidebar-reading-line"></div></div></aside></div><div class="clearfix"></div></div></main><footer class="footer" id="footer"><div class="footer-inner"><div><span>Copyright © 2020</span><span class="footer__icon"><i class="fas fa-heart"></i></span><span>xhy</span></div></div></footer><div class="loading-bar" id="loading-bar"><div class="loading-bar__progress"></div></div><div class="back2top" id="back2top"><span class="back2top__icon"><i class="fas fa-rocket"></i></span></div></div><script src="https://cdn.jsdelivr.net/npm/jquery@v3.4.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@1.5.2/velocity.ui.min.js"></script><script src="/js/utils.js?v=2.0.0"></script><script src="/js/stun-boot.js?v=2.0.0"></script><script src="/js/scroll.js?v=2.0.0"></script><script src="/js/header.js?v=2.0.0"></script><script src="/js/sidebar.js?v=2.0.0"></script></body></html>
