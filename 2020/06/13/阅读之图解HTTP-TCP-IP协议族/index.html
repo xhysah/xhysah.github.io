@@ -9,7 +9,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2020061320111951.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20200613204938501.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center">
 <meta property="article:published_time" content="2020-06-13T13:06:30.000Z">
-<meta property="article:modified_time" content="2020-06-20T10:07:59.231Z">
+<meta property="article:modified_time" content="2020-06-20T12:17:27.359Z">
 <meta property="article:author" content="xhy">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/banner.png"><meta name="keywords" content="xhy, xhy's blogs"><meta name="description" content="记录自己的学习，让自己更有动力去学习"><title>阅读之图解HTTP-TCP/IP协议族 | xhy's blogs</title><link ref="canonical" href="http://yoursite.com/2020/06/13/%E9%98%85%E8%AF%BB%E4%B9%8B%E5%9B%BE%E8%A7%A3HTTP-TCP-IP%E5%8D%8F%E8%AE%AE%E6%97%8F/"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.12.1/css/all.min.css" type="text/css"><link rel="stylesheet" href="/css/index.css?v=2.0.0"><script>var Stun = window.Stun || {};
@@ -59,8 +59,7 @@ window.CONFIG = CONFIG;</script><meta name="generator" content="Hexo 4.2.1"><lin
 <li>
         <h2 id="TCP-IP怎样进行通信传输？">
           <a href="#TCP-IP怎样进行通信传输？" class="heading-link"><i class="fas fa-link"></i></a>TCP/IP怎样进行通信传输？</h2>
-      <p>  <img src="https://img-blog.csdnimg.cn/20200613181546109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"></p>
-<p>  1.客户端在应用层发起http请求，向下传给传输层<br>  2.传输层的TCP协议对HTTP请求报文进行分割，并在报文上打上标记，传给网络层<br>  3.网络层，通过ARP寻找服务器端的MAC地址，根据路由选择进行中转<br>  4.服务器端在链路层接收到数据，向上传，传输到应用层<br>  ⚠️⚠️⚠️HTTP是是基于TCP的，所以首先会先建立tcp连接（三次握手），再建立HTTP连接</p>
+      <p>  <img src="https://img-blog.csdnimg.cn/20200613181546109.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducw==,size_16,color_FFFFFF,t_70#pic_center" style="width: image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,tepx;height: t_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3hoeXh4aHducwpx;" alt="在这里插入图片描述"><br>  1.客户端在应用层发起http请求，向下传给传输层<br>  2.传输层的TCP协议对HTTP请求报文进行分割，并在报文上打上标记，传给网络层<br>  3.网络层，通过ARP寻找服务器端的MAC地址，根据路由选择进行中转<br>  4.服务器端在链路层接收到数据，向上传，传输到应用层<br>  ⚠️⚠️⚠️HTTP是是基于TCP的，所以首先会先建立tcp连接（三次握手），再建立HTTP连接</p>
 </li>
 <li>
         <h2 id="各层协议简介">
