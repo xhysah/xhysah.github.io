@@ -717,7 +717,7 @@ kbd {
   width: 100%;
   font-size: 18px;
   background-color: #2d2e30;
-  height: 80vh;
+  height: 90vh;
 }
 .header-inner--bgcolor {
   background-color: FF2C2C2C;
@@ -1564,6 +1564,9 @@ kbd {
 .post-meta-item--updatetime {
   color: #49b1f5;
 }
+.post-meta-item--readtime {
+  color: #49b1f5;
+}
 .post-meta-item--visitors {
   color: #fc6423;
 }
@@ -1742,6 +1745,7 @@ kbd {
   line-height: 1.7;
   color: #333;
   background-color: #f3f4f5;
+  border-radius: 0.25rem;
 }
 .highlight pre,
 .highlight code {
@@ -1757,9 +1761,10 @@ kbd {
   position: relative;
   width: 100%;
   color: #333;
-  background-color: #eeeff1;
+  background-color: #f3f4f5;
   zoom: 1;
-  padding: 0.1rem 0;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 .highlight figcaption:before,
 .highlight figcaption:after {
@@ -1780,16 +1785,62 @@ kbd {
 }
 .highlight figcaption.custom {
   min-height: 1.5rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
 }
 .highlight figcaption.custom .custom-lang {
   float: left;
   margin: 0 0.6rem;
   color: rgba(51,51,51,0.6);
 }
+.highlight figcaption.custom .custom-carbon {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  margin: 0.2rem 0 0 0.5rem;
+  font-size: 0;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.highlight figcaption.custom .custom-carbon-dot {
+  display: inline-block;
+  margin: 0 4px;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+.highlight figcaption.custom .custom-carbon-dot--red {
+  background-color: #ff5f56;
+}
+.highlight figcaption.custom .custom-carbon-dot--yellow {
+  background-color: #ffbd2e;
+}
+.highlight figcaption.custom .custom-carbon-dot--green {
+  background-color: #27c93f;
+}
+.highlight figcaption:not(.custom) {
+  background-color: #eeeff1;
+}
+.highlight figcaption:not(.custom) + .table-container td.gutter,
+.highlight figcaption:not(.custom) + table td.gutter {
+  display: table-cell;
+}
 .highlight td.gutter {
   padding: 0.4rem 0.6rem;
   width: 2rem;
   background-color: #eeeff1;
+  display: none;
 }
 .highlight td.gutter pre {
   text-align: right;
@@ -1798,7 +1849,7 @@ kbd {
   background-color: inherit;
 }
 .highlight td.code {
-  padding: 0.5rem 0.6rem;
+  padding: 0.5rem 0.75rem;
 }
 .highlight .marked {
   background-color: #5b5b5b;
@@ -2021,6 +2072,9 @@ kbd {
 }
 .back2top__icon:hover {
   color: #fc6423;
+}
+a.fancybox {
+  cursor: zoom-in;
 }
 .zoomimg-mask {
   position: fixed;
